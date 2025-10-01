@@ -3,7 +3,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const { createClient } = require('@supabase/supabase-js');
 
 // Initialize Telegram Bot
-const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: false });
+const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
 // Initialize Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
@@ -25,7 +25,7 @@ bot.onText(/\/start/, async (msg) => {
 
   if (error) {
     console.error("Supabase Error:", error.message);
-    return bot.sendMessage(chatId, '❌ Error fetching categories.');
+    return bot.sendMessage(chatId, error);
   }
 
   const categories = [...new Set(data.map(item => item.category))];
