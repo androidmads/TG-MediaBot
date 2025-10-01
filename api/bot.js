@@ -154,6 +154,7 @@ module.exports = async (req, res) => {
     bot.processUpdate(req.body);
     res.status(200).send('ok');
   } else {
+    bot.processUpdate(req.body);
     res.status(200).send('Bot is running1...');
   }
 };
