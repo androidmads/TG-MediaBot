@@ -39,6 +39,11 @@ bot.onText(/\/start/, async (msg) => {
   bot.sendMessage(chatId, '📂 *Select a Category:*', { parse_mode: 'Markdown', ...keyboard });
 });
 
+bot.onText(/\/live/, async (msg) => {
+  
+  bot.sendMessage(chatId, '📂 *Alive*');
+});
+
 /**
  * 2️⃣ CATEGORY SELECTED - Show Series under that Category
  */
