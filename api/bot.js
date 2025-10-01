@@ -25,7 +25,7 @@ bot.onText(/\/start/, async (msg) => {
 
   if (error) {
     console.error("Supabase Error:", error.message);
-    return bot.sendMessage(chatId, error);
+    return bot.sendMessage(chatId, "❌ Supabase Error: " + error.message + " | Code: " + error.code + " | Details: " + error.details);
   }
 
   const categories = [...new Set(data.map(item => item.category))];
