@@ -3,7 +3,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const { createClient } = require('@supabase/supabase-js');
 
 // Initialize Telegram Bot
-const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { webHook: true });
+const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
 // Initialize Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
@@ -154,11 +154,11 @@ bot.on('callback_query', async (query) => {
   }
 });
 
-module.exports = async (req, res) => {
-  if (req.method === 'POST') {
-    bot.processUpdate(req.body);
-    res.status(200).send('ok');
-  } else {
-    res.status(200).send('Bot is running1...');
-  }
-};
+// module.exports = async (req, res) => {
+  // if (req.method === 'POST') {
+    // bot.processUpdate(req.body);
+    // res.status(200).send('ok');
+  // } else {
+    // res.status(200).send('Bot is running1...');
+  // }
+// };
